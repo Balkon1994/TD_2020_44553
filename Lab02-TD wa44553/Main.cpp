@@ -28,7 +28,14 @@ int main() {
 
 		Y = sin((2 * 3.14) * (5 * i / 1000) + (3.14 * C));
 		Y = Y * pow(2,q);
-		zapis2 << i / 1000 << " " << Y << endl;
+		Y = Y + (pow(2, q));
+		for (int j = 0; j <= 2 * (pow(2, q));j++) {
+			if (Y > (j - 2) && (Y <= j)) {
+				Y = j/2;
+				break;
+			}
+		}
+		zapis2 << i / 1000 << " " << Y<< endl;
 
 	}
 	zapis2.close();
@@ -37,8 +44,16 @@ int main() {
 	ofstream zapis3("dane3.txt");
 	for (float i = 0; i <= 4000; i++) {
 		float Y;
+		
 		Y = sin((2 * 3.14) * (5 * i / 2000) + (3.14 * C));
-		Y = Y * pow(2,q);
+		Y = Y * pow(2, q);
+		Y = Y + (pow(2, q));
+		for (int j = 0; j <= 2 * (pow(2, q)); j++) {
+			if (Y > (j - 2) && (Y <= j)) {
+				Y = j / 2;
+				break;
+			}
+		}
 		
 		zapis3 << i / 1000 << " " << Y << endl;
 
