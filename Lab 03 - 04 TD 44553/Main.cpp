@@ -2,7 +2,7 @@
 #include<fstream>
 #include<math.h>
 
-const int N = 553;
+const int N = 100;
 using namespace std;
 float X; //Wszystkie zmienne, które s¹ wynikami lub elementami funkcji z zadania 1
 float Y;
@@ -17,7 +17,7 @@ float A = 5; //Ustawienie A,B,C po indeksie
 float B = 5;
 float C = 3;
 float Pi = 3.141592653589793238462643383279; //Ustawienie liczny Pi
-float fs = 1000;//Czêstotliwoœæ
+float fs = 500;//Czêstotliwoœæ
 float fs1 = 1000;//Czêstotliowœæ do wykresów z zadania 2
 
 
@@ -31,17 +31,19 @@ float PI[N]; // Tablica urojonych wartoœci po DFT
 float M[N]; //Tablica wartoœæi M[k]
 float Mi[N]; //Tablica wartoœci Mi[k]
 float f[N];
+float f1[N];
+
 
 void TonProsty(int N,float fs,float A, float B, float C, float TAB[]) {
-	ofstream zapis2("dane1.txt");
+	
 	for (float i = 0; i < N; i++) {
 		int k = i;
-		Y = sin((2 * Pi) * (B * (i * 1 / fs)) + +(Pi * C));
+		Y = sin((2 * Pi) * (B * (i * 1 / fs)) + (Pi * C));
 		TAB[k] = Y;
-		zapis2 << (i * 1 / fs) << " " << Y << endl;
+		
 	
 	};
-	zapis2.close();
+	
 }
 
 void DFT(float TAB[], int N) {
@@ -64,17 +66,17 @@ void DFT(float TAB[], int N) {
 
 void OdwrotnyDFT(float TAB[],float TAB2[], int N) {
 	ofstream zapisIDFT("dane_IDFT.txt");
-	for (int k = 1; k <= N; k++) {
+	for (int k = 0; k <= N; k++) {
 		for (int i = 0; i < N; i++) {
 
 			TAB[k] += PR[i] * cos(2 * (Pi * k * i) / N);
 			TAB2[k] += PI[i] * sin(2 * (Pi * k * i) / N);
 
 		}
-		TAB[k] = TAB[k] / N;
+		TAB[k] = TAB[k] / N + TAB2[k]/N;
+		f1[k] = (k * (fs)) / N;
 		
-		TAB2[k] = TAB2[k] / N;
-		zapisIDFT<< TAB[k] << " " << TAB2[k] << endl;
+		zapisIDFT<< f1[k] << " " << TAB[k] << endl;
 	};
 	zapisIDFT.close();
 }
