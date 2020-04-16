@@ -2,12 +2,9 @@
 #include<fstream>
 #include<math.h>
 
-const int N = 200;
-const int N2 = 100;
+const int N = 200; //N dla Za
+const int N2 = 100; //N dla Zp
 using namespace std;
-float K1;//Wszystkie zmienne, które s¹ wynikami lub elementami funkcji z zadania 1
-float K2;
-float K3;
 
 float P;
 
@@ -15,28 +12,28 @@ float A = 5; //Ustawienie A,B,C po indeksie
 float B = 5;
 float C = 3;
 float Pi = 3.141592653589793238462643383279; //Ustawienie liczny Pi
-float Am = 4;
+float Am = 4; //Amplituda 
 float fs = 100;//Czêstotliwoœæ
 float fn2 = 100;
 float fn = 100;//Czêstotliowœæ 2
 
 
 float TAB[N]; //Tablica dla wartoœci funkcji  
-float PR[N]; //Tablice wyników po OdwrotnymDFT
-float PI[N]; // Tablica po urojonych wartosæiach po odwrtonymDFT
-float ZA1[N]; //Tablica realnych wartoœæi po DFT
-float ZP1[N]; // Tablica urojonych wartoœci po DFT
-float ZA2[N]; //Tablica realnych wartoœæi po DFT
-float ZP2[N]; // Tablica urojonych wartoœci po DFT
-float ZA3[N]; //Tablica realnych wartoœæi po DFT
-float ZP3[N]; // Tablica urojonych wartoœci po DFT
-double width[6]; //Tablica szerokoœci pasma
+float PR[N]; //Tablica realnych wartoœci po DFT
+float PI[N]; // Tablica odwrotnych wartoœci po DFT
+float ZA1[N]; //Tablica po ZA
+float ZP1[N]; 
+float ZA2[N]; 
+float ZP2[N]; 
+float ZA3[N]; 
+float ZP3[N]; 
+double width[7]; //Tablica szerokoœci pasma
 
 
 
 float M[N]; //Tablica wartoœæi M[k]
 float Mi[N]; //Tablica wartoœci Mi[k]
-float f[N];
+float f[N]; //Tablica wartoœci Fk
 
 void DFT(float TAB[], int N) {
 	for (int i = 0; i < N; i++) {
@@ -85,7 +82,7 @@ void WyprowadzeniaZP(float N, float K, float fn, float ZP[], float TAB[]) {
 		ZP[i] = cos(2 * Pi *(t) + (K * TAB[i]));
 	}
 }
-double min(float M[], float f[], int N)
+double min(float M[], float f[], int N) //Funkcja min
 {
 	float min = M[N / 2];
 
@@ -102,8 +99,7 @@ double min(float M[], float f[], int N)
 
 	return min;
 }
-
-double max(float M[], float f[], int N)
+double max(float M[], float f[], int N) //Funkcja max
 {
 	float max = M[0];
 
@@ -122,44 +118,44 @@ double max(float M[], float f[], int N)
 }
 
 int main() {
-	WyprowadzenieP(N, fn, TAB);
+	WyprowadzenieP(N, fn, TAB); //Wypisanie wartoœci po P
 	ofstream zapisP("daneP.txt");
 	for (int i = 0; i <= N; i++) {
 		zapisP << (i*Am/N) << " " << TAB[i] << endl;
 	}
 	zapisP.close();
 
-	WyprowadzeniaZA(N, 0.5, fn, ZA1, TAB);
+	WyprowadzeniaZA(N, 0.5, fn, ZA1, TAB); //Wypisanie wartoœci po ZA1
 	ofstream zapisZA1("daneZA1.txt");
 	for (int i = 0; i <= N; i++) {
 		zapisZA1 << (i * Am / N) << " " << ZA1[i] << endl;
 	}
 	zapisZA1.close();
 	WyprowadzeniaZA(N, 6, fn, ZA2, TAB);
-	ofstream zapisZA2("daneZA2.txt");
+	ofstream zapisZA2("daneZA2.txt"); //Wypisanie wartoœci po ZA2
 	for (int i = 0; i <= N; i++) {
 		zapisZA2 << (i * Am / N) << " " << ZA2[i] <<endl;
 	}
 	zapisZA2.close();
-	WyprowadzeniaZA(N, 30, fn, ZA3, TAB);
+	WyprowadzeniaZA(N, 30, fn, ZA3, TAB); //Wypisanie wartoœci po ZA3
 	ofstream zapisZA3("daneZA3.txt");
 	for (int i = 0; i <= N; i++) {
 		zapisZA3 << (i * Am / N) << " " << ZA3[i]<< endl;
 	}
 	zapisZA3.close();
-	WyprowadzeniaZP(N2, 1, fn2, ZP1, TAB);
+	WyprowadzeniaZP(N2, 1, fn2, ZP1, TAB); //Wypisanie wartoœci po ZP1
 	ofstream zapisZP1("daneZP1.txt");
 	for (int i = 0; i <= N2; i++) {
 		zapisZP1 << (i * Am / N) << " " << ZP1[i]<< endl;
 	}
 	zapisZP1.close();
-	WyprowadzeniaZP(N2, 2.5, fn2, ZP2, TAB);
+	WyprowadzeniaZP(N2, 2.5, fn2, ZP2, TAB); //Wypisanie wartoœci po ZP2
 	ofstream zapisZP2("daneZP2.txt");
 	for (int i = 0; i <= N2; i++) {
 		zapisZP2 << (i * Am / N) << " " << ZP2[i]<< endl;
 	}
 	zapisZP2.close();
-	WyprowadzeniaZP(N2, 30, fn2, ZP3, TAB);
+	WyprowadzeniaZP(N2, 30, fn2, ZP3, TAB); //Wypisanie wartoœci po ZP3
 	ofstream zapisZP3("daneZP3.txt");
 	for (int i = 0; i <= N2; i++) {
 		zapisZP3 << (i * Am / N) << " " << ZP3[i]<< endl;
@@ -167,7 +163,7 @@ int main() {
 	zapisZP3.close();
 	
 	DFT(TAB, N);
-	ofstream zapisPDFT("danePDFT.txt");
+	ofstream zapisPDFT("danePDFT.txt"); //Wypisanie wartoœci widma dla P
 
 	for (int k = 0; k < N; k++) {
 
@@ -190,7 +186,7 @@ int main() {
 	zapisPDFT.close();
 
 	DFT(ZA1, N);
-	ofstream zapisZADFT1("daneZADFT1.txt");
+	ofstream zapisZADFT1("daneZADFT1.txt"); //Wypisanie wartoœci widma dla ZA1
 
 	for (int k = 0; k < N; k++) {
 
@@ -212,7 +208,7 @@ int main() {
 	zapisZADFT1.close();
 
 	DFT(ZA2, N);
-	ofstream zapisZADFT2("daneZADFT2.txt");
+	ofstream zapisZADFT2("daneZADFT2.txt"); //Wypisanie wartoœci widma dla ZA2
 
 	for (int k = 0; k < N; k++) {
 
@@ -234,7 +230,7 @@ int main() {
 	zapisZADFT2.close();
 
 	DFT(ZA3, N);
-	ofstream zapisZADFT3("daneZADFT3.txt");
+	ofstream zapisZADFT3("daneZADFT3.txt"); //Wypisanie wartoœci widma dla ZA3
 
 	for (int k = 0; k < N; k++) {
 
@@ -252,11 +248,11 @@ int main() {
 
 
 	};
-	width[3] = max(Mi, f, N) - min(Mi, f, N);
+	width[3] = max(Mi, f, N) - min(Mi, f, N); 
 	zapisZADFT3.close();
 
 	DFT(ZP1, N2);
-	ofstream zapisZPDFT1("daneZPDFT1.txt");
+	ofstream zapisZPDFT1("daneZPDFT1.txt"); //Wypisanie wartoœci widma dla ZP1
 
 	for (int k = 0; k < N2; k++) {
 
@@ -278,7 +274,7 @@ int main() {
 	zapisZPDFT1.close();
 
 	DFT(ZP2, N2);
-	ofstream zapisZPDFT2("daneZPDFT2.txt");
+	ofstream zapisZPDFT2("daneZPDFT2.txt"); //Wypisanie wartoœci widma dla ZP2
 
 	for (int k = 0; k < N2; k++) {
 
@@ -300,7 +296,7 @@ int main() {
 	zapisZPDFT2.close();
 
 	DFT(ZP3, N2);
-	ofstream zapisZPDFT3("daneZPDFT3.txt");
+	ofstream zapisZPDFT3("daneZPDFT3.txt"); //Wypisanie wartoœci widma dla ZP3
 
 	for (int k = 0; k < N2; k++) {
 
@@ -321,9 +317,20 @@ int main() {
 	width[6] = max(Mi, f, N) - min(Mi, f, N);
 	zapisZPDFT3.close();
 
-
+	cout << "Szerokosci pasm W:" << endl;
+	ofstream zapisW("daneW.txt"); //Otwarcie zapisu szerokoœci 
 	for (int j = 0; j < 7; j++) {
 		cout << width[j] << endl;
+		zapisW << width[j] << endl; 
 	};
-
+	zapisW.close();
+	/* Szerokoœci:
+P = 34.9285 
+ZA1 = 36.6736
+ZA2 = 35.5592
+ZA3 = 31.7607
+ZP1 = 39.7607
+ZP2 = 39.7607
+ZP3 = 111.767
+*/
 };
