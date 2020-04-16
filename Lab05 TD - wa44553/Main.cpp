@@ -2,8 +2,8 @@
 #include<fstream>
 #include<math.h>
 
-const int N = 200; //N dla Za
-const int N2 = 100; //N dla Zp
+const int N = 500; //N dla Za
+const int N2 = 500; //N dla Zp
 using namespace std;
 
 float P;
@@ -13,9 +13,9 @@ float B = 5;
 float C = 3;
 float Pi = 3.141592653589793238462643383279; //Ustawienie liczny Pi
 float Am = 4; //Amplituda 
-float fs = 100;//Czêstotliwoœæ
-float fn2 = 100;
-float fn = 100;//Czêstotliowœæ 2
+float fs = 1000;//Czêstotliwoœæ
+float fn2 = 1000;
+float fn = 1000;//Czêstotliowœæ 2
 
 
 float TAB[N]; //Tablica dla wartoœci funkcji  
@@ -325,12 +325,12 @@ int main() {
 	};
 	zapisW.close();
 	/* Szerokoœci:
-P = 34.9285 
-ZA1 = 36.6736
-ZA2 = 35.5592
-ZA3 = 31.7607
-ZP1 = 39.7607
-ZP2 = 39.7607
-ZP3 = 111.767
+P = 42.6741
+ZA1 = 24.8969
+ZA2 = 24.9046
+ZA3 = 24.8458
+ZP1 = 36.8881
+ZP2 = 40.885
+ZP3 = 472 
 */
 };
