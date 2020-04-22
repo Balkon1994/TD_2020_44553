@@ -1,0 +1,7 @@
+Sygnał: ST
+Metoda: Little Endian
+Kod: 01010011 01010100
+Szerokość pasm:
+wza=0.6
+wzp=0.2
+wzf=1.2
