@@ -25,7 +25,7 @@ vector<float> zaa;
 vector<float> zff;
 vector<float> zpp;
 
-vector<bool> S2BS(char in[], int length)  //String To Binary Stream 
+vector<bool> S2BS(char swicz,char in[], int length)  //String To Binary Stream 
 {
 
     vector<bool> vec;
@@ -308,7 +308,7 @@ int main()
     cout << tab;
     cout << endl;
     int length = sizeof(tab) - 1;
-    auto BinaryVector = S2BS(tab, length); 
+    auto BinaryVector = S2BS(1,tab, length); 
    
 
 
