@@ -213,7 +213,7 @@ int main()
 		auto SEDEC3 = SEDEC(haming3);
 		auto SEDEC4 = SEDEC(haming4);
 	
-		int index = 6;
+		int index = 5;
 		int index2 = 2;
 		cout << "Zanegowanie " << index << " bitu :" << endl;
 		Negowanie(haming1, index);
@@ -272,12 +272,17 @@ int main()
 		{
 			cout << SEDEC4[i];
 		}
+		auto SEDECT = SEDEC1;
 		cout << "]";
-		Negowanie(SEDEC1, index);
+		Negowanie(SEDECT, index);
 		cout << endl;
 		cout << "Zanegowanie " << index << " bitu" << endl;
-	
-		auto S11 = Dekodowanie2(SEDEC1);
+		for (int i = 0; i < 8; i++)
+		{
+			cout << SEDECT[i];
+		}
+		cout << endl;
+		auto S11 = Dekodowanie2(SEDECT);
 		auto S22 = Dekodowanie2(SEDEC2);
 		auto S33 = Dekodowanie2(SEDEC3);
 		auto S44 = Dekodowanie2(SEDEC4);

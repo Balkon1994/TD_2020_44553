@@ -4,21 +4,22 @@ Little Endian:
 
 Kod Hamminga z naszego wyrazenia:
 [0100101][1000011][0100101][1001100]
-Zanegowanie 6 bitu :
-0100111
+Zanegowanie 5 bitu :
+0100001
 Dekodowanie:
-blad na pozycji: 6
+blad na pozycji: 5
 01010011 01010100
 
 SEDEC:
 [01001011][10000111][01001011][10011001]
-Zanegowanie 6 bitu
-blad na pozycji: 6
+Zanegowanie 5 bitu
+01000011
+blad na pozycji: 5
 01010011 01010100
-Zanegowanie 6 bitu oraz 2
-00001011
+Zanegowanie 5 bitu oraz 2
+00000011
 Dekodowanie SEDEC po 2 zmienionych bitach:
-blad na pozycji: 2
+blad na pozycji: 7
 Nie da sie tego naprawic poniewaz doszlo do manipulacji na dwoch bitach
-01010011 01010100
+00000011 01010100
 Tak jak widac ostatni otrzymany kod po dekodowaniu jest zly
